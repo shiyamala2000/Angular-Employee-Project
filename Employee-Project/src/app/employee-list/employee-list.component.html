@@ -1,0 +1,42 @@
+<mat-card class="card2">
+    <mat-card-content>
+        <h2 class="text"><img src="assets/images/Emplist-icon.png" width="40" height="40">&nbsp;&nbsp;Existing Document
+            List :
+        </h2>
+        <table class="table project-list-table table-nowrap align-middle table-borderless">
+            <thead class="table-header">
+                <tr>
+                    <th scope="col">Employee Code</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Technical Skill</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>{{ employee.id}}</td>
+                    <td>{{ employee.employeeName}}</td>
+                    <td>{{ employee.department }}</td>
+                    <td>{{ employee.designation }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.gender }}</td>
+                    <td>{{ employee.mobile }}</td>
+                    <td>
+                        <ng-container *ngIf="employee.technicalSkills && employee.technicalSkills.length > 0; else noSkills">
+                            <ul>
+                              <li *ngFor="let skill of employee.technicalSkills">{{ skill.skill }}</li>
+                            </ul>
+                          </ng-container>
+                          <ng-template #noSkills>No technical skills</ng-template>
+                    </td>
+                    <td>{{ employee.address }}</td>
+            </tbody>
+        </table>
+
+    </mat-card-content>
+</mat-card>

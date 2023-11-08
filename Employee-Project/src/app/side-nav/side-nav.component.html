@@ -1,0 +1,45 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!--Poppins  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<html>
+
+<body>
+    <nav class="navbar  navbar-fixed-top">
+        <div class="container">
+            <div class="logo-container">
+                <img class="logo" src="assets/images/kgisl-logo.png" alt="Logo" />
+            </div>
+        </div>
+    </nav>
+    <mat-drawer-container class="example-container" >
+        <mat-drawer mode="side" opened  class="sidenav">
+            <div class="sidebar-menu">
+                <ul>
+                    <li class="list-new">
+                      <a routerLink="/employeeList" class="nav-link">
+                        <span class="menuName">
+                            <img src="assets/images/listIcon.png" width="40" height="40" alt="Search Docs Icon">
+                          Exsting Employee
+                        </span>
+                      </a>
+                    </li>
+                    <li class="list-new">
+                      <a routerLink="/newEmployee" class="nav-link">
+                        <span class="menuName">
+                            <img src="assets/images/addIcon4.png" width="40" height="40" alt="Search Docs Icon">
+                         Add New Employee
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="content">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+</body>

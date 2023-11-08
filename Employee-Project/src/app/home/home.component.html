@@ -1,0 +1,381 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!--Poppins  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<html>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar  navbar-fixed-top">
+            <div class="container">
+                <div class="logo-container">
+                    <img class="logo" src="assets/images/kgisl-logo.png" alt="Logo" />
+                </div>
+            </div>
+        </nav>
+        <mat-card class="card">
+            <mat-card-content>
+                <mat-tab-group class="tabgroup" [(selectedIndex)]="selectedTabIndex">
+                    <!-- <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()"> -->
+                    <mat-tab label="Personal Information" class="tab1">
+                        <form [formGroup]="personalInfoForm" >
+                            <div class="tab1-content">
+                                <div class="col-md-5">
+                                    <img class="vector" src="assets/images/Emp1.svg" width="350" height="400" />
+                                    <!-- <img class="vector" src="assets/images/Emp-detail.svg" width="300" height="400" /> -->
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- <br> -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Employee Name</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;font-family: 'Poppins', sans-serif;">
+                                                    <input matInput placeholder="Enter Name"
+                                                        formControlName="employeeName">
+
+                                                    <mat-error
+                                                        *ngIf="personalInfoForm.controls['employeeName'].hasError('required') && personalInfoForm.controls['employeeName'].touched">
+                                                        Employee Name is required.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Mobile</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;">
+                                                    <input matInput placeholder="Enter Mobile Number"
+                                                        formControlName="mobile" pattern="^[0-9]{10}$" >
+                                                    <mat-error
+                                                        *ngIf="personalInfoForm.controls['mobile'].hasError('required') && personalInfoForm.controls['mobile'].touched">
+                                                        Mobile Number is required.
+                                                    </mat-error>
+                                                    <mat-error
+                                                        *ngIf="personalInfoForm.controls['mobile'].hasError('pattern') && personalInfoForm.controls['mobile'].touched">
+                                                        Enter 10-digit number.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Gender</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-radio-group aria-label="Select an option" formControlName="gender">
+                                                    <mat-radio-button value="Male">Male</mat-radio-button>
+                                                    <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                                                    <mat-radio-button value="Female">Female</mat-radio-button>
+                                                    <mat-error
+                                                        *ngIf="personalInfoForm.controls['gender'].hasError('required') && personalInfoForm.controls['gender'].touched">
+                                                        Gender is required.
+                                                    </mat-error>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Technical Skill</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;">
+                                                    <mat-select placeholder="Select skill"
+                                                        formControlName="technicalSkills" name="technicalSkills" multiple>
+                                                        <mat-option *ngFor="let skills of skillList"
+                                                            [value]="skills">{{skills}}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error
+                                                        *ngIf="personalInfoForm.controls['technicalSkills'].hasError('required') && personalInfoForm.controls['technicalSkills'].touched">
+                                                        At least one skill is required.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label>Address</label>&nbsp;&nbsp;
+                                            <div>
+                                                <!-- <mat-form-field class="input" appearance="outline" style="width:200px !important;">
+                                            <textarea  matInput placeholder=" Enter Address"></textarea>
+                                        </mat-form-field> -->
+                                                <mdb-form-control style="width:50%;">
+                                                    <textarea mdbInput placeholder="Enter Address" class="form-control"
+                                                        id="textAreaExample" rows="3" style="width:490px;font-family: 'Poppins', sans-serif;"
+                                                        formControlName="address"></textarea>
+                                                    <mat-error
+                                                        *ngIf="personalInfoForm.controls['address'].hasError('required') && personalInfoForm.controls['address'].touched">
+                                                        Address is required.
+                                                    </mat-error>
+                                                </mdb-form-control>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-position">
+                                    <button class="btn1" (click)="clear()">
+                                        <!-- <i class="fa fa-download"aria-hidden="true"> -->
+                                        <img class="verify-icon" src="assets/images/clear.png" width="23" height="23" />
+                                        &nbsp;Clear
+                                        <!-- </i> -->
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn2" (click)="reload()">
+                                        <!-- <i class="fa fa-refresh" aria-hidden="true"> -->
+                                        <img class="verify-icon" src="assets/images/reset.png" width="23" height="23" />
+                                        &nbsp;Reset
+                                        <!-- </i> -->
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn3" (click)="nextTab()">
+                                        <!-- <i class="fa-solid fa-arrow-right"> -->
+                                        <img class="verify-icon" src="assets/images/next.png" width="23" height="23" />
+                                        &nbsp;Next
+                                        <!-- </i> -->
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </mat-tab>
+                    <mat-tab label="Employment Details">
+                        <form [formGroup]="employeeDetailsForm" >
+                            <div class="tab2-content">
+                                <div class="col-md-5 tab1-values">
+                                    <div class="border">
+                                      <label>Personal Information</label>
+                                    </div>
+                                    <div>
+                                        <label>Employee Name:</label> {{ personalInfoFormData?.employeeName}}&nbsp;&nbsp;
+                                    </div>
+                                    <div>
+                                        <label>Mobile: </label>{{ personalInfoFormData?.mobile }}&nbsp;&nbsp;
+                                    </div>
+                                    <div>
+                                        <label>Gender:</label> {{ personalInfoFormData?.gender }}&nbsp;&nbsp;
+                                    </div>
+                                    <div>
+                                        <label>Technical Skill: </label>{{ personalInfoFormData?.technicalSkills}}&nbsp;&nbsp;
+                                    </div>
+                                    <div>
+                                        <label>Address: </label>{{ personalInfoFormData?.address }}&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Employee Code</label>&nbsp;&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;">
+                                                    <input matInput placeholder="Employee Code"
+                                                        formControlName="employeeCode">
+                                                    <mat-error
+                                                        *ngIf="employeeDetailsForm.controls['employeeCode'].hasError('required') && employeeDetailsForm.controls['employeeCode'].touched">
+                                                        Employee Code is required.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Employee Name</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;">
+                                                    <input matInput placeholder="Enter Name" [value]="personalInfoEmployeeName" >
+                                                    <!-- <input matInput placeholder="Enter Name" formControlName="employeeName">
+                                                    <mat-error
+                                                        *ngIf="employeeDetailsForm.controls['employeeName'].hasError('required') && employeeDetailsForm.controls['employeeName'].touched">
+                                                        Employee Name is required.
+                                                    </mat-error> -->
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Department</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;">
+                                                    <mat-select placeholder="Enter Department"
+                                                        formControlName="department">
+                                                        <mat-option *ngFor="let department of departments"
+                                                            [value]="department">{{ department }}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error
+                                                        *ngIf="employeeDetailsForm.controls['department'].hasError('required') && employeeDetailsForm.controls['department'].touched">
+                                                        Department is required.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Designation</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:200px !important;">
+                                                    <mat-select placeholder="Enter Designation"
+                                                        formControlName="designation">
+                                                        <mat-option *ngFor="let designation of designations"
+                                                            [value]="designation">{{ designation }}</mat-option>
+                                                    </mat-select>
+                                                    <mat-error
+                                                        *ngIf="employeeDetailsForm.controls['designation'].hasError('required') && employeeDetailsForm.controls['designation'].touched">
+                                                        Designation is required.
+                                                    </mat-error>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <label>Email</label>&nbsp;&nbsp;
+                                            <div>
+                                                <mat-form-field class="input" appearance="outline"
+                                                    style="width:490px !important;">
+                                                    <input matInput placeholder="Enter Email" formControlName="email"
+                                                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                    <mat-error
+                                                        *ngIf="employeeDetailsForm.controls['email'].hasError('required') && employeeDetailsForm.controls['email'].touched">
+                                                        Email is required.
+                                                    </mat-error>
+                                                    <mat-error
+                                                        *ngIf="employeeDetailsForm.controls['email'].hasError('pattern') && employeeDetailsForm.controls['email'].touched">
+                                                        Please enter a valid email address Ex:" ".
+                                                    </mat-error>
+                                                </mat-form-field>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-position2">
+                                    <button class="btn-back" (click)="backTab()">
+                                        <img class="verify-icon" src="assets/images/back.png" width="23" height="23" />
+                                        Back
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn1" (click)="clearSecondTab()">
+                                        <img class="verify-icon" src="assets/images/clear.png" width="23" height="23" />
+                                        &nbsp;Clear
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn2" (click)="reload()">
+                                        <img class="verify-icon" src="assets/images/reset.png" width="23" height="23" />
+                                        &nbsp;Reset
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn3" (click)="nextTabSecond()">
+                                        <img class="verify-icon" src="assets/images/next.png" width="23" height="23" />
+                                        &nbsp;Next
+                                    </button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </mat-tab>
+                    <mat-tab label="Documents and Attachments">
+                        <form [formGroup]="documentsForm" >
+                            <div class="tab3-content">
+                                <div class="col-md-5 tab1ta2-values">
+                                    <div class="border">
+                                        <label>Personal Information</label>
+                                      </div>
+                                      <div>
+                                          <label>Employee Name:</label>{{ personalInfoFormData?.employeeName}}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Mobile:</label>{{ personalInfoFormData?.mobile }}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Gender:</label>{{ personalInfoFormData?.gender }}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Technical Skill:</label>{{ personalInfoFormData?.technicalSkills}}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Address:</label>{{ personalInfoFormData?.address }}&nbsp;&nbsp;
+                                      </div>
+
+                                      <div class="border">
+                                        <label>Employee Details</label>
+                                      </div>
+                                      <div>
+                                          <label>Employee Code:</label> {{ employeeDetailsFormData?.employeeCode}}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Employee Name: </label>{{ personalInfoFormData?.employeeName }}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Department:</label> {{ employeeDetailsFormData?.department }}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Designation: </label>{{ employeeDetailsFormData?.designation}}&nbsp;&nbsp;
+                                      </div>
+                                      <div>
+                                          <label>Email: </label>{{ employeeDetailsFormData?.email }}&nbsp;&nbsp;
+                                      </div>
+                                    <!-- <img class="vector" src="assets/images/Emp1.svg" width="350" height="400" /> -->
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- <div>
+                                        <label>Resume/CV</label>&nbsp;&nbsp;
+                                        <div class="row">
+                                            <div class="col-sm-6 form-group">
+                                                <div class="form-group files color">
+                                                    <input type="file" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div>
+                                        <label style="padding-left: 11px;">Please upload your passport here</label>&nbsp;&nbsp;
+                                        <div class="row">
+                                            <div class="col-sm-6 form-group">
+                                                <div class="form-group files color">
+                                                    <input type="file" class="form-control" #fileInput  >
+                                                    <!-- (change)="onFileSelected($event)" accept=".pdf, .jpg, .png" -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-position3">
+                                    <button class="btn-back" (click)="backTab()">
+                                        <img class="verify-icon" src="assets/images/back.png" width="23" height="23" />
+                                        Back
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn1" (click)="clearThirdTab()">
+                                        <img class="verify-icon" src="assets/images/clear.png" width="23" height="23" />
+                                        &nbsp;Clear
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn2" (click)="reload()">
+                                        <img class="verify-icon" src="assets/images/reset.png" width="23" height="23" />
+                                        &nbsp;Reset
+                                    </button>
+                                    &nbsp;
+                                    <button class="btn3" (click)="onSubmit()">
+                                        <img class="verify-icon" src="assets/images/next.png" width="23" height="23" />
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-tab>
+                    <!-- </form> -->
+                </mat-tab-group>
+            </mat-card-content>
+        </mat-card>
+        <br><br>
+        
+    </div>
+</body>
+
+</html>

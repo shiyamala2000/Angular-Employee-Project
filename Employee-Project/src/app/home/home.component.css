@@ -1,0 +1,287 @@
+/* * {
+    all: unset !important;
+} */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+}
+
+.container-fluid{
+    /* background-color: rgb(229, 247, 241); */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    /* min-height: 100vh; */
+}
+
+/* -----nav----- */
+.navbar {
+    background: linear-gradient(to right, rgb(188, 250, 245), rgb(72, 136, 111));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    /* background: linear-gradient(to right, rgb(188, 250, 245), rgb(72, 136, 111)); */
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
+}
+
+/* ----card---- */
+.card {
+    margin-top: 15px;
+    /* width: 99%; */
+    /* margin-left: 130px; */
+}
+
+.card2 {
+    margin-top: 5px;
+    /* width: 80%; */
+    /* margin-left: 130px; */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* -----Tab----- */
+/* ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: red;
+    background-color: green;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels {
+    color: blue;
+    background-color: yellow;
+} */
+.tabgroup {
+    background-color: rgb(205, 236, 229);
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.tab1.mat-tab-label {
+    background-color: rgb(71, 68, 68)(3, 252, 190);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* -----tab1 content----- */
+.row{
+    padding: 10px;
+}
+.tab1-content {
+    background-color: white;
+    padding-top: 20px;
+    /* padding-left: 190px; */
+    overflow-x: hidden;
+    height: 420px;
+}
+
+.mat-mdc-tab-body-content {
+    height: 500px;
+}
+
+/* .mat-radio-button {
+    transform: scale(0.5);
+    margin-right: 10px;
+} */
+
+
+/* -----tab2 content----- */
+.tab2-content {
+    background-color: white;
+    padding-top: 20px;
+    overflow-x: hidden;
+    height: 420px;
+    font-family: 'Poppins', sans-serif;
+    /* padding-left: 190px; */
+}
+.tab1-values{
+    padding-top: 10px;
+    padding-bottom: 50px;
+    border: 1px solid rgb(183, 231, 221); 
+    padding: 10px; 
+    margin-top: 15px;
+}
+.tab1ta2-values{
+    padding-top: 10px;
+    padding-bottom: 50px;
+    border: 1px solid rgb(183, 231, 221); 
+    padding: 10px; 
+    margin-top: 4px;
+}
+.border{
+    background-color: rgb(183, 231, 221);
+    padding-left: 120px;
+}
+/* -----tab3-content */
+.tab3-content {
+    background-color: white;
+    padding-top: 25px;
+    overflow-x: hidden;
+    height: 420px;
+    /* padding-left: 190px; */
+}
+.form-control{
+    font-family: 'Poppins', sans-serif;
+}
+/* ----Button---- */
+.button-position {
+    margin-left: 700px;
+    margin-top: 330px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.button-position2 {
+    margin-left: 600px;
+    margin-top: 330px;
+}
+
+.button-position3 {
+    margin-left: 600px;
+    margin-top: 330px;
+
+}
+
+.btn1 {
+    background-color: rgb(66, 66, 66);
+    /* background: linear-gradient(to right, rgb(0, 87, 53), rgb(69, 92, 90)); */
+    /* background: linear-gradient(to right, rgb(177, 180, 180), rgb(133, 219, 212)); */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    /* cursor: pointer; */
+    height: 30px;
+    width: 90px;
+    transition: background-color 0.3s;
+}
+
+.btn1:hover {
+    cursor: pointer;
+    background-color: rgb(240, 247, 247);
+}
+
+.btn2 {
+    background-color: rgb(66, 66, 66);
+    /* background: linear-gradient(to right, rgb(0, 87, 53), rgb(69, 92, 90)); */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 30px;
+    width: 90px;
+    transition: background-color 0.3s;
+}
+
+.btn2:hover {
+    cursor: pointer;
+    background-color: rgb(23, 148, 148);
+}
+
+.btn3 {
+    background-color: rgb(66, 66, 66);
+    /* background-color: rgb(178, 207, 200); */
+    /* background: linear-gradient(to right, rgb(0, 87, 53), rgb(69, 92, 90)); */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 30px;
+    width: 90px;
+    transition: background-color 0.3s;
+}
+
+.btn3:hover {
+    cursor: pointer;
+    background-color: rgb(23, 148, 148);
+}
+
+.btn-back {
+    background-color: rgb(66, 66, 66);
+    /* background-color: rgb(178, 207, 200); */
+    /* background: linear-gradient(to right, rgb(0, 87, 53), rgb(69, 92, 90)); */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 30px;
+    width: 90px;
+    transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+    cursor: pointer;
+    background-color: rgb(23, 148, 148);
+}
+
+
+
+
+.files input {
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  padding: 80px 30px 120px 80%;
+  text-align: center !important;
+  margin: 0;
+  width: 200% !important;
+}
+
+.files input:focus {
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  border: 1px solid #92b0b3;
+}
+
+.files {
+  position: relative
+}
+
+.files:after {
+  pointer-events: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 50px;
+  right: 0;
+  height: 56px;
+  content: "";
+  background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+  display: block;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.color input {
+  background-color: #f1f1f1;
+}
+
+.files:before {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  pointer-events: none;
+  width: 200%;
+  right: 0;
+  height: 57px;
+  content: "Drag & Drop it here. ";
+  display: block;
+  margin: 0 auto;
+  color: #2ea591;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
